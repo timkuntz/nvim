@@ -4,7 +4,7 @@ Personal Neovim configuration. Branches for different workflows.
 ## Example Use
 
 ```
-https://github.com/timkuntz/nvim.git ~/.config/nvim-rails
+git clone https://github.com/timkuntz/nvim.git ~/.config/nvim-rails
 NVIM_APPNAME="nvim-rails" nvim
 ```
 
