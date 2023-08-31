@@ -16,8 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     { import = "base" },
---    { import = "plugins.extras.db" },
---    { import = "plugins.extras.pde" },
+    { import = "pde" },
   },
   defaults = { lazy = false, version = nil },
   install = { missing = true, colorscheme = { "tokyonight", "gruvbox" } },

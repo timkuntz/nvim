@@ -45,6 +45,7 @@ return {
         -- b = { name = "+Buffer" },
         -- d = { name = "+Debug" },
         -- D = { name = "+Database" },
+        c = { name = "+Code" },
         e = { name = "+Explore" },
         h = { name = "+Help" },
         s = { name = "+Search" },
