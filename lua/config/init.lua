@@ -3,8 +3,10 @@ nv_config = os.getenv("NV_CONFIG")
 
 -- default setup
 config = {}
-config.default = {}
-config.default.active = true
+config.base = {}
+config.base.active = true
+config.base.lualine = {}
+config.base.lualine.active = true
 
 -- wiki setup
 config.wiki = {}
