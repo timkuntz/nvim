@@ -6,6 +6,13 @@ config = {}
 config.default = {}
 config.default.active = true
 
+-- wiki setup
+config.wiki = {}
+config.wiki.base = false
+if nv_config == "wiki" then
+  config.wiki.base = true
+end
+
 -- pde setup
 config.pde = {}
 config.pde.harpoon = false
@@ -13,4 +20,4 @@ if nv_config == "pde" then
   config.pde.harpoon = true
 end
 
-print(vim.inspect(config))
+-- print(vim.inspect(config))

@@ -16,6 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     { import = "base" },
+    { import = "wiki" },
     { import = "pde" },
   },
   defaults = { lazy = false, version = nil },
