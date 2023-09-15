@@ -116,10 +116,11 @@ return {
       })
 
       -- Enable telescope fzf native, if installed
-      pcall(require("telescope").load_extension, "fzf")
+      -- pcall(require("telescope").load_extension, "fzf")
 
       -- See `:help telescope.builtin`
       vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
+      -- requires the executable 'rg'; brew install rg
       vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
       vim.keymap.set("n", "<leader>sG", function()
         require("telescope.builtin").live_grep({ glob_pattern = "!*test.rb", glob_pattern = "!**/test/**" })
