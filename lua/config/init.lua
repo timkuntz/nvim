@@ -16,8 +16,10 @@ end
 -- pde setup
 config.pde = {}
 config.pde.harpoon = false
+config.pde.nvim_surround = false
 if nv_config == "pde" then
   config.pde.harpoon = true
+  config.pde.nvim_surround = true
 end
 
 -- print(vim.inspect(config))

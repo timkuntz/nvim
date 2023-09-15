@@ -40,6 +40,28 @@ return {
             P('Created session: ' .. session_path)
           end
         end,
+        add = function()
+          local name = vim.fn.getcwd():match("^.+/(.+)$")
+          require("workspaces").open(name)
+        end,
+        remove = function()
+          local session_dir = vim.fn.stdpath("data") .. '/' .. 'sessions' .. '/'
+          local session_name = vim.fn.getcwd():match("^.+/(.+)$")
+          local branch = vim.fn.system("git branch --show-current 2> /dev/null | tr -d '\n'")
+          if branch ~= "" then
+            session_name = session_name .. '-' .. branch
+          end
+          local session_path = session_dir .. session_name
+          -- if session exists load, else save (create)
+          local f=io.open(session_path,"r")
+          if f~=nil then
+            require("sessions").stop_autosave()
+            ok, error = os.remove(session_path)
+            if ok then
+              P('Removed session: ' .. session_path)
+            end
+          end
+        end
       }
     })
     require('telescope').load_extension("workspaces")
