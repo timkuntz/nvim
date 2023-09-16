@@ -96,7 +96,7 @@ keymap("n", "<M-w>", ":bd<CR>", defaults)
 keymap("n", "<M-W>", buffers.only_buffer, { desc = "Yank qualified class name" })
 
 -- TODO NS is a custom function in for treesitter
--- keymap("n", "<Leader>cy", NS, defaults)
+keymap("n", "<Leader>cy", NS, { noremap = true, silent = true, desc = "Yank FQ class" })
 
 -- goto tab #
 keymap("n", "<M-1>", ":tabnext 1<CR>", defaults)

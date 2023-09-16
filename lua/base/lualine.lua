@@ -3,12 +3,13 @@ return {
   'nvim-lualine/lualine.nvim',
   dependencies = {
     'nvim-tree/nvim-web-devicons',
-    'RRethy/nvim-base16',
+    -- 'RRethy/nvim-base16',
   },
   enabled = config.base.lualine.active,
   -- See `:help lualine.txt`
   init = function()
-    require('base16-colorscheme').setup()
+    -- loading this has negative side-effects on telescope input
+    -- require('base16-colorscheme').setup()
 
     local lualine = require('lualine')
 
