@@ -16,12 +16,10 @@ if nv_config == "wiki" then
 end
 
 -- pde setup
+is_pde = nv_config == "pde"
 config.pde = {}
-config.pde.harpoon = false
-config.pde.nvim_surround = false
-if nv_config == "pde" then
-  config.pde.harpoon = true
-  config.pde.nvim_surround = true
-end
+config.pde.harpoon = is_pde
+config.pde.nvim_surround = is_pde
+config.pde.copilot = is_pde
 
 -- print(vim.inspect(config))
