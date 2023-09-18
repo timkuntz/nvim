@@ -1,7 +1,7 @@
 -- This requires an OpenAI API key and a pricing plan to work.
 return {
     "Bryley/neoai.nvim",
-    enabled = false
+    enabled = false,
     dependencies = {
         "MunifTanjim/nui.nvim",
     },
