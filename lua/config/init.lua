@@ -18,8 +18,9 @@ end
 -- pde setup
 is_pde = nv_config == "pde"
 config.pde = {}
+config.pde.copilot = is_pde
+config.pde.git_worktree = is_pde
 config.pde.harpoon = is_pde
 config.pde.nvim_surround = is_pde
-config.pde.copilot = is_pde
 
 -- print(vim.inspect(config))
