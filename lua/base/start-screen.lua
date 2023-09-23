@@ -16,12 +16,22 @@ return {
     -- automatically save the loaded session on quit
     vim.g.startify_session_persistence = 1
 
+   -- make sure sessions are saved at key points
+    require('sessions').setup({
+      events = {
+        "VimLeavePre",
+        "DirChangedPre",
+      },
+    })
     -- when opening a workspace, create and/or load a session automatically
     -- the session will be unique to the git branch (if it exists)
     -- this will allow different workflows per branch
     require('workspaces').setup({
       hooks = {
         open = function()
+          -- store a list of buffers to close after we load the new project session
+          local buffers_to_close = require('utils.buffers').get_listed_buffers(vim.fn.getbufinfo())
+          -- compute a session path based on the directory name and git branch
           local session_dir = vim.fn.stdpath("data") .. '/' .. 'sessions' .. '/'
           local session_name = vim.fn.getcwd():match("^.+/(.+)$")
           local branch = vim.fn.system("git branch --show-current 2> /dev/null | tr -d '\n'")
@@ -35,6 +45,10 @@ return {
             io.close(f)
             require("sessions").load(session_path, { silent = true })
             P('Loaded session: ' .. session_path)
+          -- close all buffers from the previous project
+          for _, buffer in ipairs(buffers_to_close) do
+            vim.cmd('bd' .. ' ' .. buffer.bufnr)
+          end
           else
             require("sessions").save(session_path, { silent = true })
             P('Created session: ' .. session_path)
@@ -66,13 +80,19 @@ return {
     })
     require('telescope').load_extension("workspaces")
 
+    open_workspace = function()
+      local name = vim.fn.getcwd():match("^.+/(.+)$")
+      require("workspaces").open(name)
+    end
+
     vim.g.startify_commands = {
       {n = {'  New File', 'enew'}},
       {f = {'  Open File', 'Telescope find_files'}},
       {b = {'  Browse Files', 'NeoTreeFocusToggle'}},
       {o = {'  Open Project', 'Telescope workspaces'}},
       -- TODO open a directory browser so user can select without having to :cd first
-      {a = {'  Add Project (current directory)', 'WorkspacesAdd'}},
+      -- {a = {'  Add Project (current directory)', 'WorkspacesAdd'}},
+      {a = {'  Add Project', "lua require('telescope').extensions.cder.cder()" }},
       {m = {'  Recent files (in project)', "lua require('telescope.builtin').oldfiles({ cwd_only = true })"}},
       {r = {'  Recent files (all)', 'Telescope oldfiles'}},
       {t = {'󰊄  Find Text', 'Telescope live_grep'}},
@@ -95,9 +115,9 @@ return {
 
     vim.g.startify_lists = buildStartifyLists()
 
-    vim.g.startify_custom_footer = {
-      ':cd <directory> to add a new project',
-    }
+    -- vim.g.startify_custom_footer = {
+    --   ':cd <directory> to add a new project',
+    -- }
   end
 }
 

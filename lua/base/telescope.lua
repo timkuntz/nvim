@@ -18,10 +18,9 @@ return {
       "nvim-lua/plenary.nvim",
       "stevearc/aerial.nvim",
       "nvim-telescope/telescope-ui-select.nvim",
+      "Zane-/cder.nvim",
     },
     init = function()
-      require("telescope").load_extension("ui-select")
-
       -- https://github.com/nvim-telescope/telescope.nvim/issues/1048
       local actions = require("telescope.actions")
       local action_state = require("telescope.actions.state")
@@ -43,31 +42,6 @@ return {
           -- Open the file with VisiData
           local utils = require("utils")
           utils.open_term("vd " .. full_path, { direction = "float" })
-        end,
-
-        -- File browser
-        file_browser = function(prompt_bufnr)
-          local content = require("telescope.actions.state").get_selected_entry()
-          if content == nil then
-            return
-          end
-
-          local full_path = content.cwd
-          if content.filename then
-            full_path = content.filename
-          elseif content.value then
-            full_path = full_path .. require("plenary.path").path.sep .. content.value
-          end
-
-          -- Close the Telescope window
-          require("telescope.actions").close(prompt_bufnr)
-
-          -- Open file browser
-          -- vim.cmd("Telescope file_browser select_buffer=true path=" .. vim.fs.dirname(full_path))
-          require("telescope").extensions.file_browser.file_browser({
-            select_buffer = true,
-            path = vim.fs.dirname(full_path),
-          })
         end,
 
         pick = function(pb)
@@ -99,7 +73,6 @@ return {
           ["<C-p>"] = actions.cycle_history_prev,
           ["?"] = actions_layout.toggle_preview,
           ["<C-s>"] = custom_actions.visidata,
-          ["<A-f>"] = custom_actions.file_browser,
         },
         n = {
           ["<CR>"] = custom_actions.pick,
@@ -112,6 +85,19 @@ return {
       require("telescope").setup({
         defaults = {
           mappings = mappings,
+        },
+        extensions = {
+          cder = {
+            dir_command = { 'fd', '--hidden', '.git$|Gemfile$', os.getenv('HOME') .. '/src', '-x', 'dirname' },
+            pager_command = 'less -RS',
+            mappings = {
+              default = function(directory)
+                vim.cmd.cd(directory)
+                -- TODO: move all the workspace and session handling to a utils module
+                open_workspace()
+              end
+            },
+          },
         },
       })
 
@@ -166,12 +152,13 @@ return {
         }))
       end, { desc = "[/] Fuzzily search in current buffer" })
 
+      vim.keymap.set("n", "<leader>sp", "<cmd>Telescope workspaces<cr>", { desc = "[S]earch [P]roject" })
+
       local telescope = require("telescope")
       telescope.load_extension("fzf")
-      -- telescope.load_extension "file_browser"
-      -- telescope.load_extension "project"
-      -- telescope.load_extension "projects"
+      telescope.load_extension("ui-select")
       telescope.load_extension("aerial")
+      telescope.load_extension("cder")
       -- telescope.load_extension "dap"
       -- telescope.load_extension "frecency"
       -- telescope.load_extension "luasnip"
