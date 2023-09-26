@@ -49,6 +49,7 @@ return {
         e = { name = "+Explore" },
         h = { name = "+Help" },
         s = { name = "+Search" },
+        t = { name = "+Test" },
         -- j = { name = "+Jump" },
         -- g = { name = "+Git", h = { name = "Hunk" }, t = { name = "Toggle" } },
         -- n = { name = "+Notes" },
