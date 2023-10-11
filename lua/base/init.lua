@@ -8,18 +8,18 @@ return {
 		dependencies = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
 	},
 
-	{
-		-- Add indentation guides even on blank lines
-		-- See `:help indent_blankline.txt`
-		"lukas-reineke/indent-blankline.nvim",
-		opts = {
-			char = "┊",
-			show_trailing_blankline_indent = false,
-			use_treesitter = true,
-			-- filetype = {'vim', 'lua', 'json', 'ruby', 'javascript', 'typescript'},
-			filetype_exclude = {'startify'},
-		},
-	},
+	-- {
+	-- 	-- Add indentation guides even on blank lines
+	-- 	-- See `:help indent_blankline.txt`
+	-- 	"lukas-reineke/indent-blankline.nvim",
+	-- 	opts = {
+	-- 		char = "┊",
+	-- 		show_trailing_blankline_indent = false,
+	-- 		use_treesitter = true,
+	-- 		-- filetype = {'vim', 'lua', 'json', 'ruby', 'javascript', 'typescript'},
+	-- 		filetype_exclude = {'startify'},
+	-- 	},
+	-- },
 
 	-- "gc" to comment visual regions/lines
 {
