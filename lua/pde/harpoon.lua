@@ -14,8 +14,8 @@ return {
     require("telescope").load_extension('harpoon')
   end,
   keys = {
-    { "<S-h><S-h>", "<CMD>Telescope harpoon marks<CR>", desc = "Harpoon UI" },
-    { "<S-h>a", "<CMD>lua require('harpoon.mark').add_file()<CR>", desc = "Harpoon add file" },
+    { "<S-j><S-j>", "<CMD>Telescope harpoon marks<CR>", desc = "Harpoon UI" },
+    { "<S-h><S-h>", "<CMD>lua require('harpoon.mark').add_file()<CR>", desc = "Harpoon add file" },
   },
 }
 
