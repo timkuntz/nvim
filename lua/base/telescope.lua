@@ -79,6 +79,7 @@ return {
           ["<C-,>"] = custom_actions.multi_select,
           ["s"] = custom_actions.visidata,
           ["<A-f>"] = custom_actions.file_browser,
+          ["<C-d>"] = actions.delete_buffer,
         },
       }
 
