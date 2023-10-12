@@ -143,3 +143,6 @@ keymap("i", ";", ";<c-g>u")
 keymap("v", "<", "<gv")
 keymap("v", ">", ">gv")
 
+-- Navigate the quickfix list
+keymap("n", "<C-:>", "<cmd>cnext<CR>zz", { desc = "Forward qfixlist" })
+keymap("n", [[<C-">]], "<cmd>cprev<CR>zz", { desc = "Backward qfixlist" })
