@@ -20,10 +20,10 @@ return {
     }
   },
   keys = {
-    { "<leader>ef", "<cmd>Neotree position=left toggle=true<cr>",                   desc = "Files" },
-    { "<leader>eb", "<cmd>Neotree position=left toggle=true source=buffers<cr>",    desc = "Buffers" },
-    { "<leader>eg", "<cmd>Neotree position=left toggle=true source=git_status<cr>", desc = "Git Status" },
-    { "<leader>er", "<cmd>Neotree reveal %p<cr>",                                   desc = "Reveal File" },
+    -- { "<leader>ef", "<cmd>Neotree position=left toggle=true<cr>",                   desc = "Files" },
+    { "<leader>e", "<cmd>Neotree reveal %p<cr>",                                   desc = "Reveal File" },
+    { "<leader>be", "<cmd>Neotree position=left toggle=true source=buffers<cr>",    desc = "Buffers" },
+    { "<leader>ge", "<cmd>Neotree position=left toggle=true source=git_status<cr>", desc = "Git Status" },
   },
 }
 
