@@ -22,7 +22,7 @@ vim.opt.cursorline = true
 -- convert tab to spaces
 vim.opt.expandtab = true
 vim.opt.hidden = true
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.inccommand = "nosplit"
 vim.opt.joinspaces = false

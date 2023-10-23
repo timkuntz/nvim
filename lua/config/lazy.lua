@@ -21,7 +21,7 @@ require("lazy").setup({
   },
   defaults = { lazy = false, version = nil },
   install = { missing = true, colorscheme = { "tokyonight", "gruvbox" } },
-  checker = { enabled = true },
+  checker = { enabled = true, notify = false },
   performance = {
     cache = {
       enabled = true,

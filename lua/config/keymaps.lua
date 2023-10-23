@@ -3,6 +3,13 @@ local buffers = require("utils.buffers")
 local keymap = vim.keymap.set
 local defaults = { noremap = true, silent = true }
 
+local defs = function(opts)
+  local new_opts = {}
+  for k,v in pairs(defaults) do new_opts[k] = v end
+  for k,v in pairs(opts) do new_opts[k] = v end
+  return new_opts
+end
+
 -- move up/down .5 page and center cursor
 keymap("n", "<C-u>", "<C-u>zz")
 keymap("n", "<C-d>", "<C-d>zz")
@@ -25,7 +32,10 @@ keymap("n", "<c-j>", ":wincmd j<CR>", { noremap = false, silent = true })
 keymap("n", "<c-h>", ":wincmd h<CR>", { noremap = false, silent = true })
 keymap("n", "<c-l>", ":wincmd l<CR>", { noremap = false, silent = true })
 
-keymap("n", "<leader>h", ":set hlsearch! hlsearch?<CR>", defaults)
+-- ui related keymaps
+keymap("n", "<leader>uh", ":noh<CR>", defs({ desc = "Clear search highlight" }))
+-- keymap("n", "<leader>uh", ":set hlsearch! hlsearch?<CR>", defs({ desc = "Toggle search highlight" }))
+
 
 -- Copy/Paste
 keymap("n", "yp", ':let @*=expand("%")<CR>', defaults)
@@ -39,9 +49,6 @@ keymap("v", "p", '"_dP', defaults)
 
 -- toggle line numbers
 keymap("n", "mn", ":set number! number?<CR>", defaults)
-
--- toggle search highlight
-keymap("n", "mh", ":set hlsearch! hlsearch?<CR>", defaults)
 
 -- shortcuts for quitting nvim
 keymap("n", "mq", ":qall<CR>", defaults)
