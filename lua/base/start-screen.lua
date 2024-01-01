@@ -80,23 +80,18 @@ return {
     })
     require('telescope').load_extension("workspaces")
 
-    open_workspace = function()
-      local name = vim.fn.getcwd():match("^.+/(.+)$")
-      require("workspaces").open(name)
-    end
-
     vim.g.startify_commands = {
       {n = {'  New File', 'enew'}},
       {f = {'  Open File', 'Telescope find_files'}},
       {b = {'  Browse Files', 'NeoTreeFocusToggle'}},
       {o = {'  Open Project', 'Telescope workspaces'}},
-      -- TODO open a directory browser so user can select without having to :cd first
-      -- {a = {'  Add Project (current directory)', 'WorkspacesAdd'}},
-      {a = {'  Add Project', "lua require('telescope').extensions.cder.cder()" }},
+      {a = {'  Add Project (current directory)', "WorkspacesAdd" }},
+      {d = {'  Delete Project (current directory)', "WorkspacesRemove" }},
       {m = {'  Recent files (in project)', "lua require('telescope.builtin').oldfiles({ cwd_only = true })"}},
       {r = {'  Recent files (all)', 'Telescope oldfiles'}},
       {t = {'󰊄  Find Text', 'Telescope live_grep'}},
       {g = {'  Git Change Branch', 'Telescope git_branches'}},
+      {c = {'  Neovim Config', "lua require('telescope.builtin').find_files({ cwd = vim.fn.stdpath('config') })"}},
       {p = {'  Plugins (extensions)', 'Lazy'}},
       {q = {'󰅚  Quit', 'qa!'}},
     }
@@ -115,9 +110,10 @@ return {
 
     vim.g.startify_lists = buildStartifyLists()
 
-    -- vim.g.startify_custom_footer = {
-    --   ':cd <directory> to add a new project',
-    -- }
+    vim.g.startify_custom_footer = {
+      '    ' .. vim.fn.getcwd(),
+      '  :cd <directory> to add a new project',
+    }
   end
 }
 

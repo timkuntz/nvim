@@ -32,10 +32,14 @@ keymap("n", "<c-j>", ":wincmd j<CR>", { noremap = false, silent = true })
 keymap("n", "<c-h>", ":wincmd h<CR>", { noremap = false, silent = true })
 keymap("n", "<c-l>", ":wincmd l<CR>", { noremap = false, silent = true })
 
--- ui related keymaps
+-- UI
+-- search highlight
 keymap("n", "<leader>uh", ":noh<CR>", defs({ desc = "Clear search highlight" }))
 -- keymap("n", "<leader>uh", ":set hlsearch! hlsearch?<CR>", defs({ desc = "Toggle search highlight" }))
 
+-- TODO are there other mappings for toggle relative line numbers?
+-- toggle line numbers
+keymap("n", "<leader>un", "<cmd>set number! number?<cr>", defs({ desc = "line numbers" }))
 
 -- Copy/Paste
 keymap("n", "yp", ':let @*=expand("%")<CR>', defaults)
@@ -47,24 +51,11 @@ keymap("n", "yY", ":%y+<CR>", defaults)
 -- Paste over currently selected text without yanking it
 keymap("v", "p", '"_dP', defaults)
 
--- toggle line numbers
-keymap("n", "mn", ":set number! number?<CR>", defaults)
+-- quit
+keymap("n", "<leader>q", "<cmd>qa<cr>", defs({ desc = "quit" }))
 
--- shortcuts for quitting nvim
-keymap("n", "mq", ":qall<CR>", defaults)
-keymap("n", "mQ", ":qall!<CR>", defaults)
-
--- shortcuts for writing the file
-keymap("n", "mw", ":w<CR>", defaults)
-keymap("n", "mW", ":wall!<CR>", defaults)
 -- don't do this, it creates issues for typing
 -- vim.keymap.set('i', 'mw', '<ESC>:w<CR>', { desc = 'Write buffer' })
-
--- delete all buffers
-keymap("n", "mb", ":%bd|e#|bd#<CR>", defaults)
-
--- check an item
-keymap("n", "mx", "r√<CR>", defaults)
 
 -- TODO remove any mappings below that wouldn't be part of a base install
 --      they shouldn't require installing anything but Neovim

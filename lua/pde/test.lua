@@ -108,6 +108,7 @@ return {
 	},
 	{
 		"stevearc/overseer.nvim",
+		enabled = false,
 		keys = {
 			{ "<leader>ToR", "<cmd>OverseerRunCmd<cr>", desc = "Run Command" },
 			{ "<leader>Toa", "<cmd>OverseerTaskAction<cr>", desc = "Task Action" },

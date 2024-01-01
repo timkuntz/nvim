@@ -38,9 +38,7 @@ return {
       defaults = {
         prefix = "<leader>",
         mode = { "n", "v" },
-        [";"] = { "<cmd>Startify<CR>", "Home" },
-        W = { "<cmd>update!<CR>", "Save" },
-        Q = { function() require("utils").quit() end, "Quit", },
+        [";"] = { "<cmd>Startify<CR>", "home" },
         -- a = { name = "+AI" },
         b = { name = "+Buffer" },
         -- d = { name = "+Debug" },

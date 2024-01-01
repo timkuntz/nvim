@@ -18,7 +18,7 @@ return {
       "nvim-lua/plenary.nvim",
       "stevearc/aerial.nvim",
       "nvim-telescope/telescope-ui-select.nvim",
-      "Zane-/cder.nvim",
+      "rcarriga/nvim-notify",
     },
     init = function()
       -- https://github.com/nvim-telescope/telescope.nvim/issues/1048
@@ -87,19 +87,7 @@ return {
         defaults = {
           mappings = mappings,
         },
-        extensions = {
-          cder = {
-            dir_command = { 'fd', '--hidden', '.git$|Gemfile$', os.getenv('HOME') .. '/src', '-x', 'dirname' },
-            pager_command = 'less -RS',
-            mappings = {
-              default = function(directory)
-                vim.cmd.cd(directory)
-                -- TODO: move all the workspace and session handling to a utils module
-                open_workspace()
-              end
-            },
-          },
-        },
+        extensions = {},
       })
 
       -- Enable telescope fzf native, if installed
@@ -155,12 +143,15 @@ return {
 
       vim.keymap.set("n", "<leader>sp", "<cmd>Telescope workspaces<cr>", { desc = "[S]earch [P]roject" })
 
+      -- vim.keymap.set("n", "<leader>sn", "<cmd>Telescope notify<cr>", { desc = "[S]earch [N]otifications" })
+
+
+
       local telescope = require("telescope")
-      telescope.load_extension("fzf")
-      telescope.load_extension("ui-select")
-      telescope.load_extension("aerial")
-      telescope.load_extension("cder")
-      -- telescope.load_extension "dap"
+      telescope.load_extension "fzf"
+      telescope.load_extension "ui-select"
+      telescope.load_extension "aerial"
+      -- telescope.load_extension "notify"
       -- telescope.load_extension "frecency"
       -- telescope.load_extension "luasnip"
       -- telescope.load_extension "conventional_commits"

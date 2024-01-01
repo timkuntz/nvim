@@ -1,5 +1,5 @@
-config_home = vim.fn.stdpath("config")
-nv_config = os.getenv("NV_CONFIG")
+-- config_home = vim.fn.stdpath("config")
+local nv_config = os.getenv("NV_CONFIG")
 
 -- default setup
 config = {}
@@ -16,7 +16,7 @@ if nv_config == "wiki" then
 end
 
 -- pde setup
-is_pde = nv_config == "pde"
+local is_pde = nv_config == "pde"
 config.pde = {}
 config.pde.copilot = is_pde
 config.pde.git = is_pde
