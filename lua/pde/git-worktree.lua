@@ -1,7 +1,8 @@
 -- https://github.com/ThePrimeagen/git-worktree.nvim
 return {
   'ThePrimeagen/git-worktree.nvim',
-  enabled = config.pde.git_worktree,
+  -- enabled = config.pde.git_worktree,
+  enabled = config.base.telescope,
   init = function()
     require("git-worktree").setup({
       change_directory_command = "cd", -- default: "cd",

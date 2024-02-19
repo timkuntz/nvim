@@ -7,8 +7,8 @@ config.base = {}
 config.base.active = true
 config.base.lualine = {}
 config.base.lualine.active = true
-config.base.telescope = true
-config.base.fzf_lua = true
+config.base.telescope = false
+config.base.fzf_lua = not config.base.telescope
 
 -- wiki setup
 config.wiki = {}

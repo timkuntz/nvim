@@ -80,21 +80,40 @@ return {
     })
     require('telescope').load_extension("workspaces")
 
-    vim.g.startify_commands = {
-      {n = {'  New File', 'enew'}},
-      {f = {'  Open File', 'Telescope find_files'}},
-      {b = {'  Browse Files', 'NeoTreeFocusToggle'}},
-      {o = {'  Open Project', 'Telescope workspaces'}},
-      {a = {'  Add Project (current directory)', "WorkspacesAdd" }},
-      {d = {'  Delete Project (current directory)', "WorkspacesRemove" }},
-      {m = {'  Recent files (in project)', "lua require('telescope.builtin').oldfiles({ cwd_only = true })"}},
-      {r = {'  Recent files (all)', 'Telescope oldfiles'}},
-      {t = {'󰊄  Find Text', 'Telescope live_grep'}},
-      {g = {'  Git Change Branch', 'Telescope git_branches'}},
-      {c = {'  Neovim Config', "lua require('telescope.builtin').find_files({ cwd = vim.fn.stdpath('config') })"}},
-      {p = {'  Plugins (extensions)', 'Lazy'}},
-      {q = {'󰅚  Quit', 'qa!'}},
-    }
+    -- TODO: DRY this out to focus on just the differences
+    if config.base.telescope then
+      vim.g.startify_commands = {
+        {n = {'  New File', 'enew'}},
+        {f = {'  Open File', 'Telescope find_files'}},
+        {e = {'  Browse Files', 'NeoTreeFocusToggle'}},
+        {o = {'  Open Project', 'Telescope workspaces'}},
+        {a = {'  Add Project (current directory)', "WorkspacesAdd" }},
+        {d = {'  Delete Project (current directory)', "WorkspacesRemove" }},
+        {m = {'  Recent files (in project)', "lua require('telescope.builtin').oldfiles({ cwd_only = true })"}},
+        {r = {'  Recent files (all)', 'Telescope oldfiles'}},
+        {t = {'󰊄  Find Text', 'Telescope live_grep'}},
+        {g = {'  Git Change Branch', 'Telescope git_branches'}},
+        {c = {'  Neovim Config', "lua require('telescope.builtin').find_files({ cwd = vim.fn.stdpath('config') })"}},
+        {p = {'  Plugins (extensions)', 'Lazy'}},
+        {q = {'󰅚  Quit', 'qa!'}},
+      }
+    else
+      vim.g.startify_commands = {
+        {n = {'  New File', 'enew'}},
+        {f = {'  Open File', 'FzfLua files'}},
+        {e = {'  Explore Files', 'NeoTreeFocusToggle'}},
+        {o = {'  Open Project', "lua require('fzf-lua').workspaces()"}},
+        {a = {'  Add Project (current directory)', "WorkspacesAdd" }},
+        {d = {'  Delete Project (current directory)', "WorkspacesRemove" }},
+        {m = {'  Recent files (in project)', "lua require('fzf-lua').oldfiles({ cwd_only = true })"}},
+        {r = {'  Recent files (all)', "lua require('fzf-lua').oldfiles()"}},
+        {t = {'󰊄  Find Text', 'FzfLua live_grep'}},
+        {g = {'  Git Change Branch', 'FzfLua git_branches'}},
+        {c = {'  Neovim Config', "lua require('fzf-lua').files({ cwd = vim.fn.stdpath('config') })"}},
+        {p = {'  Plugins (extensions)', 'Lazy'}},
+        {q = {'󰅚  Quit', 'qa!'}},
+      }
+    end
 
     -- create a local function for return the default startify lists
     local buildStartifyLists = function()
