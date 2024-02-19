@@ -3,7 +3,7 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
   },
-  enabled = config.pde.harpoon;
+  enabled = config.pde.harpoon,
   opts = {
     menu = {
       width = vim.api.nvim_win_get_width(0) - 4,

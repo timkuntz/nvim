@@ -37,7 +37,7 @@ vim.opt.pumblend = 10
 -- popmenu max lines to show
 vim.opt.pumheight = 10
 -- show relative line numbers
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.scrolloff = 8
 vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 vim.opt.shiftround = true

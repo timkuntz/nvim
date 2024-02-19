@@ -1,6 +1,10 @@
 return {
 	-- Detect tabstop and shiftwidth automatically
 	"tpope/vim-sleuth",
+	-- {
+	-- "junegunn/fzf.vim",
+	-- 	dependencies = { "junegunn/fzf" },
+	-- },
 
 	{
 		-- Autocompletion

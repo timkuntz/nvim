@@ -7,6 +7,8 @@ config.base = {}
 config.base.active = true
 config.base.lualine = {}
 config.base.lualine.active = true
+config.base.telescope = true
+config.base.fzf_lua = true
 
 -- wiki setup
 config.wiki = {}
@@ -16,12 +18,12 @@ if nv_config == "wiki" then
 end
 
 -- pde setup
-local is_pde = nv_config == "pde"
+-- local is_pde = nv_config == "pde"
 config.pde = {}
-config.pde.copilot = is_pde
-config.pde.git = is_pde
-config.pde.git_worktree = is_pde
-config.pde.harpoon = is_pde
-config.pde.nvim_surround = is_pde
+config.pde.copilot = true
+config.pde.git = true
+config.pde.git_worktree = true
+config.pde.harpoon = false
+config.pde.nvim_surround = true
 
 -- print(vim.inspect(config))
