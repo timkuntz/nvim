@@ -45,7 +45,6 @@ M.workspaces = function(opts)
     cb(nil)
   end
 
-  opts.fzf_opts["--no-multi"] = ""
   core.fzf_exec(contents, opts)
 end
 
