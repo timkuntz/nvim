@@ -78,10 +78,10 @@ return {
         end
       }
     })
-    require('telescope').load_extension("workspaces")
 
     -- TODO: DRY this out to focus on just the differences
     if config.base.telescope then
+      require('telescope').load_extension("workspaces")
       vim.g.startify_commands = {
         {n = {'  New File', 'enew'}},
         {f = {'  Open File', 'Telescope find_files'}},
