@@ -1,19 +1,6 @@
 return {
-  {
-    "mrjones2014/legendary.nvim",
-    keys = {
-      { "<C-S-p>", "<cmd>Legendary<cr>", desc = "Legendary" },
-      { "<leader>hc", "<cmd>Legendary<cr>", desc = "Command Palette" },
-    },
-    opts = {
-      which_key = { auto_register = true },
-    },
-  },
-  {
     "folke/which-key.nvim",
-    dependencies = {
-      "mrjones2014/legendary.nvim",
-    },
+    dependencies = { },
     event = "VeryLazy",
     opts = {
       setup = {
@@ -41,7 +28,6 @@ return {
         [";"] = { "<cmd>Startify<CR>", "home" },
         -- a = { name = "+AI" },
         b = { name = "+Buffer" },
-        -- d = { name = "+Debug" },
         -- D = { name = "+Database" },
         c = { name = "+Code" },
         e = { name = "+Explore" },
@@ -81,7 +67,6 @@ return {
       wk.setup(opts.setup)
       wk.register(opts.defaults)
     end,
-  },
 }
 
 
