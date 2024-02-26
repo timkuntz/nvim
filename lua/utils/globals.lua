@@ -13,3 +13,28 @@ R = function(name)
   return require(name)
 end
 
+MergeTables = function(defaults, custom)
+    local newTable = {}
+    for key, value in pairs(defaults) do
+        newTable[key] = value
+    end
+    for key, value in pairs(custom) do
+        newTable[key] = value
+    end
+    return newTable
+end
+
+RegisterKeys = function(keymap, opts)
+  opts = opts or {}
+  opts = MergeTables({
+    mode = "n",
+    prefix = "<leader>",
+    buffer = nil,
+    silent = true,
+    noremap = true,
+    nowait = false,
+  }, opts)
+
+  require('which-key').register(keymap, opts)
+end
+

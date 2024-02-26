@@ -9,23 +9,11 @@ local function load_module(module_name)
 	return module
 end
 
-local function mergeTables(defaults, custom)
-    local newTable = {}
-    for key, value in pairs(defaults) do
-        newTable[key] = value
-    end
-    for key, value in pairs(custom) do
-        newTable[key] = value
-    end
-    return newTable
-end
-
 local function splitAndAppend(str, array)
     for word in str:gmatch("%S+") do
         table.insert(array, word)
     end
 end
-
 
 local function setup_ruby_adapter(dap)
 	dap.adapters.ruby = function(callback, config)
@@ -155,7 +143,7 @@ local function setup_ruby_configuration(dap)
 
 	dap.configurations.ruby = {}
 	for _, launch_config in ipairs(launch_configs) do
-		local config = mergeTables(default_config, launch_config)
+		local config = MergeTables(default_config, launch_config)
 		table.insert(dap.configurations.ruby, config)
 	end
 end

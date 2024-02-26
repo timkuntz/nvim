@@ -57,7 +57,6 @@ return {
       dapui.close()
     end
 
-    local whichkey = require "which-key"
     local keymap = {
       d = {
         name = "Debug",
@@ -84,27 +83,6 @@ return {
         e = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate" },
       },
     }
-
-    whichkey.register(keymap, {
-      mode = "n",
-      prefix = "<leader>",
-      buffer = nil,
-      silent = true,
-      noremap = true,
-      nowait = false,
-    })
-
-    -- local keymap_v = {
-    --   name = "Debug",
-    --   e = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate" },
-    -- }
-    -- whichkey.register(keymap_v, {
-    --   mode = "v",
-    --   prefix = "<leader>",
-    --   buffer = nil,
-    --   silent = true,
-    --   noremap = true,
-    --   nowait = false,
-    -- })
+    RegisterKeys(keymap)
   end,
 }
