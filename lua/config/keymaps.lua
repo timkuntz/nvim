@@ -142,5 +142,8 @@ keymap("v", "<", "<gv")
 keymap("v", ">", ">gv")
 
 -- Navigate the quickfix list
-keymap("n", "<C-:>", "<cmd>cnext<CR>zz", { desc = "Forward qfixlist" })
-keymap("n", [[<C-">]], "<cmd>cprev<CR>zz", { desc = "Backward qfixlist" })
+keymap("n", "]q", "<cmd>cnext<CR>", { desc = "Forward qfixlist" })
+keymap("n", "[q", "<cmd>cprev<CR>", { desc = "Backward qfixlist" })
+-- Navigate quickfix lists
+keymap("n", "]Q", "<cmd>colder<CR>", { desc = "Older qfixlist" })
+keymap("n", "[Q", "<cmd>cnewer<CR>", { desc = "Newer qfixlist" })
