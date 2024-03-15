@@ -147,3 +147,9 @@ keymap("n", "[q", "<cmd>cprev<CR>", { desc = "Backward qfixlist" })
 -- Navigate quickfix lists
 keymap("n", "]Q", "<cmd>colder<CR>", { desc = "Older qfixlist" })
 keymap("n", "[Q", "<cmd>cnewer<CR>", { desc = "Newer qfixlist" })
+
+
+-- Call system open with the contents of the default register
+keymap("n", '<leader>o', [[<CMD>lua vim.fn.system("open " .. vim.fn.getreg('"'))<CR>]], { noremap = true, silent = true, desc = "Open Register"})
+
+
