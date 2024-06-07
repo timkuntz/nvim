@@ -52,7 +52,11 @@ keymap("n", "yY", ":%y+<CR>", defaults)
 keymap("v", "p", '"_dP', defaults)
 
 -- quit
-keymap("n", "<leader>q", "<cmd>qa<cr>", defs({ desc = "quit" }))
+keymap("n", "<leader>qq", "<cmd>qa<cr>", defs({ desc = "quit" }))
+
+-- restore the session for the current directory
+keymap("n", "<leader>qr", [[<cmd>lua require("persistence").load()<cr>]], defs({ desc = "restore session" }))
+keymap("n", "<leader>qd", [[<cmd>lua require("persistence").stop()<cr>]], defs({ desc = "disable session" }))
 
 -- don't do this, it creates issues for typing
 -- vim.keymap.set('i', 'mw', '<ESC>:w<CR>', { desc = 'Write buffer' })
@@ -84,14 +88,15 @@ keymap("n", "<TAB>", buffers.goto_next_buffer, defaults)
 keymap("n", "<S-TAB>", buffers.goto_previous_buffer, defaults)
 -- vim.keymap.set('n', '<S-TAB>', ':bp<CR>', defaults)
 
+-- close the current buffer
+keymap("n", "<leader>bd", "<Cmd>bd<CR>", {desc = "Delete current" })
+-- close all other buffers
+keymap("n", "<leader>bo", buffers.only_buffer, { desc = "Delete others" })
+
 -- source the current file
 keymap("n", "<leader>x", ":source %<CR>")
-
--- close the current buffer
-keymap("n", "<M-w>", ":bd<CR>", defaults)
-
--- close all other buffers
-keymap("n", "<M-W>", buffers.only_buffer, { desc = "Yank qualified class name" })
+-- write and source the current file
+keymap("n", "<leader><leader>x", ":w | source %<CR>")
 
 -- TODO NS is a custom function in for treesitter
 keymap("n", "<Leader>cy", NS, { noremap = true, silent = true, desc = "Yank FQ class" })

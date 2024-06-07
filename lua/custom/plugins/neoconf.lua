@@ -1,10 +1,7 @@
 -- Configure neovim with global/local json setting files
 return {
   'folke/neoconf.nvim',
-  enabled = false,
-  dependencies = {
-    'neovim/nvim-lspconfig'
-  },
+  enabled = true,
   config = function()
     require('neoconf').setup {}
   end

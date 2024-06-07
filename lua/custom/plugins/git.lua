@@ -13,7 +13,7 @@ return {
 	{
 		"tpope/vim-fugitive",
 		event = "VeryLazy",
-		enabled = config.pde.git,
+		enabled = true,
 		keys = {
 			{ "<leader>gb", "<Cmd>Git blame<Cr>", desc = "blame" },
 			{ "<leader>gd", "<Cmd>Gvdiffsplit!<Cr>", desc = "diff" },
@@ -25,7 +25,7 @@ return {
 	-- git Hub related actions
 	{
 		"tpope/vim-rhubarb",
-		enabled = config.pde.git,
+		enabled = true,
 		keys = {
 			{ "<leader>gg", github_open, desc = "github" },
 			{ "<leader>gh", github_copy, desc = "github (copy)" },
@@ -35,7 +35,7 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "VeryLazy",
-		enabled = config.pde.git,
+		enabled = true,
 		opts = {
 			-- See `:help gitsigns.txt`
 			signs = {

@@ -1,11 +1,39 @@
 return {
   {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      'folke/neoconf.nvim',
+    },
+    init = function()
+      -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
+      require("neodev").setup({
+	-- add any options here, or leave empty to use the default settings
+      })
+
+      -- then setup your lsp server as usual
+      local lspconfig = require('lspconfig')
+
+      -- example to setup lua_ls and enable call snippets
+      lspconfig.lua_ls.setup({
+	settings = {
+	  Lua = {
+	    completion = {
+	      callSnippet = "Replace"
+	    }
+	  }
+	}
+      })
+    end,
+    enabled = true,
+    tag = 'v0.1.8',
+  },
+  {
     'VonHeikemen/lsp-zero.nvim',
     enabled = true,
     branch = 'v2.x',
     dependencies = {
       -- LSP Support
-      {'neovim/nvim-lspconfig'},             -- Required
+      -- {'neovim/nvim-lspconfig'},             -- Required
       {'williamboman/mason.nvim'},           -- Optional
       {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
@@ -59,7 +87,7 @@ return {
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
       local lsp_config = require("lspconfig")
 
-      lsp_config.ruby_ls.setup {
+      lsp_config.ruby_lsp.setup {
 	capabilities = capabilities,
 	cmd = {os.getenv("HOME") .. "/.asdf/shims/ruby-lsp"},
       }

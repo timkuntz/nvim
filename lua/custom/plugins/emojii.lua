@@ -1,6 +1,6 @@
 return {
 	"xiyaowong/telescope-emoji.nvim",
-	enabled = config.base.telescope,
+	enabled = false,
 	keys = {
 		{ "<leader>se", "<cmd>Telescope emoji<cr>", desc = "[S]earch [E]moji" },
 	},

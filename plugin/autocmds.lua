@@ -4,6 +4,15 @@
 local function augroup(name)
   return vim.api.nvim_create_augroup("quigkin_" .. name, { clear = true })
 end
+
+-- this loads the session but syntax highlighting is not working
+-- vim.api.nvim_create_autocmd({ "VimEnter" }, {
+--   group = vim.api.nvim_create_augroup("restore-session-on-vim-enter", {}),
+--   callback = function()
+--     require("persistence").load()
+--   end,
+-- })
+
 --
 -- Let's stop manually saving
 --

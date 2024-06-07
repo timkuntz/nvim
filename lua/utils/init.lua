@@ -34,7 +34,6 @@ function M.has(plugin)
   return require("lazy.core.config").plugins[plugin] ~= nil
 end
 
-
 function M.fold_methods()
   local api = vim.api
   local ts_utils = require('nvim-treesitter.ts_utils')

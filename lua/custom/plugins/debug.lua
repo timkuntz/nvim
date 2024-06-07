@@ -4,7 +4,9 @@ return {
     "theHamsta/nvim-dap-virtual-text",
     "rcarriga/nvim-dap-ui",
     "folke/which-key.nvim",
+    "nvim-neotest/nvim-nio",
   },
+  enabled = false,
   config = function()
     require("nvim-dap-virtual-text").setup {
       commented = true,

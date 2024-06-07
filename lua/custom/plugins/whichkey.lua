@@ -34,7 +34,7 @@ return {
         g = { name = "+Git" },
         h = { name = "+Help" },
         s = { name = "+Search" },
-        t = { name = "+Test" },
+        -- t = { name = "+Test" },
         u = { name = "+UI" },
         -- j = { name = "+Jump" },
         -- n = { name = "+Notes" },

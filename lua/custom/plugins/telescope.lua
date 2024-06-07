@@ -4,7 +4,7 @@
 return {
   {
     "nvim-telescope/telescope-fzf-native.nvim",
-    enabled = config.base.pde,
+    enabled = true,
     -- NOTE: If you are having trouble with this installation,
     --       refer to the README for telescope-fzf-native for more instructions.
     build = "make",
@@ -14,7 +14,7 @@ return {
   },
   {
     "nvim-telescope/telescope.nvim",
-    enabled = config.base.pde,
+    enabled = true,
     version = "*",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -162,7 +162,7 @@ return {
   },
   {
     "stevearc/aerial.nvim",
-    enabled = config.base.pde,
+    enabled = true,
     config = true,
   },
 }

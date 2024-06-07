@@ -10,7 +10,7 @@ end
 return {
 	'github/copilot.vim',
 	lazy = false,
-	enabled = config.pde.copilot,
+	enabled = false,
   keys = {
     { "<leader>cC", "", desc = "Copilot" },
     { "<leader>cCs", "<CMD>Copilot status<CR>", desc = "status" },

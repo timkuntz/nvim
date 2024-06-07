@@ -4,6 +4,7 @@ return {
 		dependencies = {
 			"tpope/vim-dispatch",
 		},
+		enabled = false,
 		keys = {
 			{ "<leader>ts", "<cmd>TestSuite<cr>", desc = "Test Suite" },
 			{ "<leader>tf", "<cmd>TestFile<cr>", desc = "Test File" },

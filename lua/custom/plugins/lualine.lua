@@ -7,11 +7,9 @@ return {
       'echasnovski/mini.bufremove',
     },
     enabled = true,
-    -- enabled = config.base.lualine.active,
     -- See `:help lualine.txt`
     init = function()
       local lualine = require('lualine')
-      local icons = require('config.icons')
 
       local lsp = {
         function()
@@ -57,11 +55,6 @@ return {
             'branch', 
             {
               "diff",
-              symbols = {
-                added = icons.git.LineAdded,
-                modified = icons.git.LineModified,
-                removed = icons.git.LineRemoved,
-              },
               source = function()
                 local gitsigns = vim.b.gitsigns_status_dict
                 if gitsigns then

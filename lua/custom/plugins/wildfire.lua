@@ -1,5 +1,5 @@
 -- https://github.com/SUSTech-data/wildfire.nvim
--- incremental selection
+-- incremental selection using <CR> and <BS>
 return {
   "SUSTech-data/wildfire.nvim",
   event = "VeryLazy",
